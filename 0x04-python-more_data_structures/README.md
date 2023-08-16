@@ -21,3 +21,6 @@ by Guillaume
 2. [Unique addition](./2-uniq_add.py) - Write a function that adds all unique integers in a list (only for each integer).
 	- Prototype: `def uniq_add(my_list=[]):`
 	- You are not allowed to import any module
+3. [Present in both](./3-common_element.py) - Write a function that returns a set of common elements in two sets.
+	- Prototype: `def common_elemnents(set_1, set_2):`
+	- You are not allowed to import any module
