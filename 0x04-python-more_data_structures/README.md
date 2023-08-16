@@ -27,3 +27,6 @@ by Guillaume
 4. [Only differents](./4-only_diff_elements.py) - Write a function that returns a set of all elements present in only one set.
 	- Prototype: `def only_diff_elements(set_1, set_2):`
 	- You are not allowed to import any module
+5. [Number of keys](./5-number_keys.py) - Write a function that returns the number of keys in a dictionary.
+	- Prototype: `def number_keys(a_dictionary):`
+	- You are not allowed to import any module
