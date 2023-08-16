@@ -24,3 +24,6 @@ by Guillaume
 3. [Present in both](./3-common_element.py) - Write a function that returns a set of common elements in two sets.
 	- Prototype: `def common_elemnents(set_1, set_2):`
 	- You are not allowed to import any module
+4. [Only differents](./4-only_diff_elements.py) - Write a function that returns a set of all elements present in only one set.
+	- Prototype: `def only_diff_elements(set_1, set_2):`
+	- You are not allowed to import any module
