@@ -16,4 +16,5 @@
 5. [Number of keys](./5-number_keys.py) - Python function that returns the number of keys in a dictionary.
 
 6. [Print sorted dictionary](./6-print_sorted_dictionary) - Python function that prints a dictionary by orderd keys.
-7. [Update dictionary](./7-update_dictionary.py) - Python that replaces or adds key/value in a dictionary.
+7. [Update dictionary](./7-update_dictionary.py) - Python function that replaces or adds key/value in a dictionary.
+8. [Simple delete by key](./8-simple_delete.py) - Python function that deletes a key in a dictionary.
