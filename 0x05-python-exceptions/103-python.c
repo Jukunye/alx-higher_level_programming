@@ -1,5 +1,8 @@
 #include <Python.h>
 
+void print_python_bytes(PyObject *p);
+void print_python_float(PyObject *p);
+
 /**
  * print_python_bytes - prints bytes in a python byte object
  * @p: A Python Object pointer
