@@ -2,6 +2,7 @@
 """this module defines the fundation class Base
 """
 import json
+import os
 
 
 class Base:
@@ -71,3 +72,18 @@ class Base:
                 obj = cls(1)
             obj.update(**dictionary)
             return obj
+
+    @classmethod
+    def load_from_file(cls):
+        """returns the list of the JSON string representation json_string"""
+        filename = "{}.json".format(cls.__name__)
+
+        if os.path.exists(filename) is False:
+            return []
+
+        with open(filename, 'r') as f:
+            list_str = f.read()
+
+        list_dict = cls.from_json_string(list_str)
+
+        return [cls.create(**d) for d in list_dict]

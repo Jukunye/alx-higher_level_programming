@@ -199,7 +199,7 @@ class testBase_create(unittest.TestCase):
         s = Square(3, 5, 1, 35)
         s_dictionary = s.to_dictionary()
         s1 = Square.create(**s_dictionary)
-        self.assertEqual("[Square] (35) 5/1 - 3", str(s))
+        self.assertEqual("[Square] (35) 5/1 - 3", str(s1))
 
     def test_create_square_new(self):
         s = Square(3, id=3)
@@ -249,4 +249,48 @@ class testBase_load_from_file(unittest.TestCase):
     Tests for class method def load_from_file(cls):
     that returns a list of instances:
     """
-    pass
+    def tearDown(self):
+        # Clean up created files after each test
+        if os.path.exists("Rectangle.json"):
+            os.remove("Rectangle.json")
+        if os.path.exists("Square.json"):
+            os.remove("Square.json")
+
+    def test_load_from_file_docstring(self):
+        self.assertIsNotNone(Base.load_from_file.__doc__)
+
+    def test_load_from_file_more_than_one_arg(self):
+        with self.assertRaises(TypeError):
+            Base.load_from_file([], 1)
+
+    def test_load_from_file_rectangle(self):
+        r = Rectangle(1, 2)
+        r = Rectangle(2, 4)
+        Rectangle.save_to_file([r, r])
+        list_output = Rectangle.load_from_file()
+        self.assertEqual(str(r), str(list_output[0]))
+
+    def test_load_from_file_square(self):
+        s = Square(5)
+        s1 = Square(9)
+        Square.save_to_file([s, s1])
+        list_squares_output = Square.load_from_file()
+        self.assertEqual(str(s), str(list_squares_output[0]))
+
+    def test_load_from_file_rectangle_types(self):
+        r = Rectangle(1, 2)
+        r1 = Rectangle(2, 4)
+        Rectangle.save_to_file([r, r1])
+        output = Rectangle.load_from_file()
+        self.assertTrue(all(type(obj) == Rectangle for obj in output))
+
+    def test_load_from_file_square_types(self):
+        s = Square(10)
+        s1 = Square(9)
+        Square.save_to_file([s, s1])
+        output = Square.load_from_file()
+        self.assertTrue(all(type(obj) == Square for obj in output))
+
+    def test_load_from_file_no_file(self):
+        output = Square.load_from_file()
+        self.assertEqual([], output)
