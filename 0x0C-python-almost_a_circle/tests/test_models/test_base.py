@@ -148,6 +148,22 @@ class testBase_save_to_file(unittest.TestCase):
         Square.save_to_file([s])
         self.assertTrue(os.path.exists("Square.json"))
 
+    def test_save_to_file_None_Square(self):
+        Square.save_to_file(None)
+        self.assertTrue(os.path.exists("Square.json"))
+
+    def test_save_to_file_empty_Square(self):
+        Square.save_to_file([])
+        self.assertTrue(os.path.exists("Square.json"))
+
+    def test_save_to_file_None_Rectangle(self):
+        Rectangle.save_to_file(None)
+        self.assertTrue(os.path.exists("Rectangle.json"))
+
+    def test_save_to_file_empty_Rectangle(self):
+        Rectangle.save_to_file([])
+        self.assertTrue(os.path.exists("Rectangle.json"))
+
     def tearDown(self):
         # Clean up created files after each test
         if os.path.exists("Rectangle.json"):
@@ -294,3 +310,7 @@ class testBase_load_from_file(unittest.TestCase):
     def test_load_from_file_no_file(self):
         output = Square.load_from_file()
         self.assertEqual([], output)
+
+
+if __name__ == "__main__":
+    unittest.main()
