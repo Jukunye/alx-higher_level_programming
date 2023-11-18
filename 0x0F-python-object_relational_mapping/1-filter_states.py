@@ -13,16 +13,15 @@ if __name__ == "__main__":
         host="localhost",
         port=3306,
         user=sys.argv[1],
-        password=sys.argv[2],
+        passwd=sys.argv[2],
         db=sys.argv[3]
     )
 
     cursor = connection.cursor()
 
-    query = "SELECT * \
-                FROM states \
-                WHERE states.name LIKE 'N%' \
-                ORDER BY states.id ASC;"
+    query = "SELECT * FROM states \
+            WHERE name LIKE BINARY 'N%' \
+            ORDER BY states.id ASC;"
 
     cursor.execute(query)
     rows = cursor.fetchall()
