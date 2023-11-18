@@ -10,6 +10,10 @@ import MySQLdb
 search = sys.argv[4]
 
 if __name__ == '__main__':
+    """
+    Access to the database and get the cities
+    from the database.
+    """
 
     connection = MySQLdb.connect(
         host="localhost",
