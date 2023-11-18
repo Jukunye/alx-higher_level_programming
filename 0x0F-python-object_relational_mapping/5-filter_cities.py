@@ -7,8 +7,6 @@
 import sys
 import MySQLdb
 
-search = sys.argv[4]
-
 if __name__ == '__main__':
     """
     Access to the database and get the cities
@@ -32,7 +30,7 @@ if __name__ == '__main__':
            WHERE states.name LIKE BINARY %(state)s \
            ORDER BY cities.id ASC;"
 
-    cursor.execute(query, {'state': search})
+    cursor.execute(query, {'state': sys.argv[4]})
     rows = cursor.fetchall()
 
     if rows is not None:
