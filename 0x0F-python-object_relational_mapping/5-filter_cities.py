@@ -25,13 +25,14 @@ if __name__ == "__main__":
             FROM cities \
            INNER JOIN states \
            ON cities.state_id = states.id \
-           WHERE states.name = %s \
+           WHERE states.name LIKE BINARY %(state)s \
            ORDER BY cities.id ASC;"
 
-    cursor.execute(query, (search,))
+    cursor.execute(query, {'state': search})
     rows = cursor.fetchall()
 
-    print(", ".join([row[1] for row in rows]))
+    if rows is not None:
+        print(", ".join([row[1] for row in rows]))
 
     cursor.close()
     connection.close()
