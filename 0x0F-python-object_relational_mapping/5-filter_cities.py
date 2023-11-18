@@ -25,12 +25,13 @@ if __name__ == "__main__":
             FROM cities \
            INNER JOIN states \
            ON cities.state_id = states.id \
+           WHERE states.name = %s \
            ORDER BY cities.id ASC;"
 
-    cursor.execute(query)
+    cursor.execute(query, (search,))
     rows = cursor.fetchall()
 
-    print(", ".join(f"{city}" for id, city, state in rows if state == search))
+    print(", ".join([row[1] for row in rows]))
 
     cursor.close()
     connection.close()
