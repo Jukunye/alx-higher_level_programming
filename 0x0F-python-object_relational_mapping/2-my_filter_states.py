@@ -20,7 +20,7 @@ if __name__ == "__main__":
 
     query = f"SELECT * \
                 FROM states \
-                WHERE states.name = '{sys.argv[4]}' \
+                WHERE name LIKE BINARY '{sys.argv[4]}' \
                 ORDER BY states.id ASC;"
 
     cursor.execute(query)
