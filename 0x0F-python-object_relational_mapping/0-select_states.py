@@ -1,31 +1,28 @@
 #!/usr/bin/python3
+"""
+This module list all states from the datagase
+"""
 
 import sys
 import MySQLdb
 
 if __name__ == "__main__":
-    try:
-        connection = MySQLdb.connect(
-            host="localhost",
-            port=3306,
-            user=sys.argv[1],
-            password=sys.argv[2],
-            db=sys.argv[3]
-        )
 
-        cursor = connection.cursor()
+    connection = MySQLdb.connect(
+        host="localhost",
+        port=3306,
+        user=sys.argv[1],
+        password=sys.argv[2],
+        db=sys.argv[3]
+    )
 
-        cursor.execute("SELECT * FROM states ORDER BY states.id ASC;")
-        rows = cursor.fetchall()
+    cursor = connection.cursor()
 
-        for row in rows:
-            print(row)
+    cursor.execute("SELECT * FROM states ORDER BY states.id ASC;")
+    rows = cursor.fetchall()
 
-    except MySQLdb.Error as e:
-        print(f"Error connecting to MySQL database: {e}")
+    for row in rows:
+        print(row)
 
-    finally:
-        if cursor:
-            cursor.close()
-        if connection:
-            connection.close()
+    cursor.close()
+    connection.close()
