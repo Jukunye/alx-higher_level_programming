@@ -6,7 +6,7 @@ This script that takes in an argument and displays all values
 import sys
 import MySQLdb
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     """
     Access to the database and get the states
     from the database.
@@ -21,10 +21,10 @@ if __name__ == "__main__":
 
     cursor = connection.cursor()
 
-    query = f"SELECT * \
+    query = "SELECT * \
                 FROM states \
-                WHERE name LIKE BINARY '{sys.argv[4]}' \
-                ORDER BY states.id ASC;"
+                WHERE name LIKE BINARY '{}' \
+                ORDER BY states.id ASC;".format(sys.argv[4])
 
     cursor.execute(query)
     rows = cursor.fetchall()
