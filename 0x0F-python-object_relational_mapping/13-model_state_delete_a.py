@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-This is a script that deletes all State objects with a name containing the letter a
+This is a script that deletes all State objects
+with a name containing the letter a
 from the database hbtn_0e_6_usa.
 """
 
@@ -25,6 +26,6 @@ if __name__ == "__main__":
 
     for state in states:
         session.delete(state)
-    
+
     session.commit()
     session.close()
