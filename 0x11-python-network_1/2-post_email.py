@@ -14,4 +14,4 @@ if __name__ == "__main__":
 
     with request.urlopen(argv[1], data=data) as response:
         html = response.read()
-        print(response.decode(encoding='utf-8'))
+        print(html.decode(encoding='utf-8'))
